@@ -8,8 +8,10 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const cors = require('cors')
 
 dotenv.config();
+app.use(cors())
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
@@ -18,7 +20,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify:true
+    useFindAndModify: false
   })
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
@@ -33,6 +35,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });

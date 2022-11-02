@@ -1,0 +1,40 @@
+.box {
+    height: 25vh;
+    width: 30vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: gray;
+    border-radius: 10px;
+    color: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.heading{
+    font-size: 20px;
+}
+.option{
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    align-items: center;
+}
+.option>:first-child{
+    background: white;
+    padding: 10px 20px;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.option>:last-child{
+    cursor: pointer;
+}

@@ -10,6 +10,7 @@ export default function SinglePost() {
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const PF = "http://localhost:5000/images/";
+  // const PF = "http://localhost:5000/upload/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -17,7 +18,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await axios.get("http://localhost:5000/api/posts/" + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -25,24 +26,24 @@ export default function SinglePost() {
     getPost();
   }, [path]);
 
-  const handleDelete = async () => {
+const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/${post._id}`, {
+    await axios.delete(`http://localhost:5000/api/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await axios.put(`http://localhost:5000/api/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
       });
       setUpdateMode(false)
-    } catch (err) {}
+    } catch (err) { }
   };
 
   return (
@@ -64,14 +65,18 @@ export default function SinglePost() {
             {title}
             {post.username === user?.username && (
               <div className="singlePostEdit">
-                <i
-                  className="singlePostIcon far fa-edit"
-                  onClick={() => setUpdateMode(true)}
-                ></i>
-                <i
-                  className="singlePostIcon far fa-trash-alt"
-                  onClick={handleDelete}
-                ></i>
+                <span title='Edit' className="singlePostIcon" >
+                  <i
+                    className="far fa-edit"
+                    onClick={() => setUpdateMode(true)}
+                  ></i>
+                </span>
+                <span title='Delete'>
+                  <i
+                    className="singlePostIcon far fa-trash-alt"
+                    onClick={handleDelete}
+                  ></i>
+                </span>
               </div>
             )}
           </h1>
@@ -104,4 +109,4 @@ export default function SinglePost() {
       </div>
     </div>
   );
-}
+};
