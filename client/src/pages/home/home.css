@@ -1,3 +1,8 @@
-.home{
-    display: flex;
+.home {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 80vw 20vw;
+    gap: 10px;
+    overflow-x: hidden;
+    position: relative;
 }

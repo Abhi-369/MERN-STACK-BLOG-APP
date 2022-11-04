@@ -61,7 +61,8 @@ export default function TopBar() {
         <div className="topRight">
           {user ? (
             <Link to="/settings">
-              <img className="topImg" src={PF + user.profilePic || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'} alt="" />
+              {/* <img className="topImg" src={PF + user.profilePic || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'} alt="" /> */}
+              <img className="topImg" src={!user?.profilePic ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' : PF + user?.profilePic} alt="" />
             </Link>
           ) : (
             <ul className="topList">

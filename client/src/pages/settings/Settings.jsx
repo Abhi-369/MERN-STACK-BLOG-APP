@@ -32,7 +32,7 @@ export default function Settings() {
       updatedUser.profilePic = filename;
       try {
         await axios.post("http://localhost:5000/api/upload", data);
-      } catch (err) {}
+      } catch (err) { }
     }
     try {
       const res = await axios.put("http://localhost:5000/api/users/" + user._id, updatedUser);
@@ -52,8 +52,12 @@ export default function Settings() {
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
           <div className="settingsPP">
+            {/* <img
+              src={file ? URL.createObjectURL(file) : PF + user.profilePic}
+              alt=""
+            /> */}
             <img
-              src={file ? URL.createObjectURL(file) : PF+user.profilePic}
+              src={file ? URL.createObjectURL(file) : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"}
               alt=""
             />
             <label htmlFor="fileInput">

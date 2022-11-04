@@ -1,6 +1,11 @@
-.posts{
+/* .posts{
     flex: 9;
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
+} */
+.posts {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, 1fr); */
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
 }

@@ -10,6 +10,12 @@ export default function Post({ post }) {
 
   return (
     <div className='post__container'>
+      
+      <div className='info'>
+        <img src={PF + user?.profilePic || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'} className='admin__img' alt="" />
+        <h1>{post.username}</h1>
+      </div>
+
       <div className="post">
         {post?.photo && <img className="postImg" src={PF + post?.photo} alt="empty" />}
         <div className="postInfo">
@@ -19,7 +25,7 @@ export default function Post({ post }) {
             ))}
           </div>
           <Link to={`/post/${post._id}`} className="link">
-            <span className="postTitle">{post.title}</span>
+            <span className="postTitle">{`${post.title.substring(0, 60)}...`}</span>
           </Link>
           <hr />
           <span className="postDate">
@@ -27,11 +33,6 @@ export default function Post({ post }) {
           </span>
         </div>
         <p className="postDesc">{post.desc}</p>
-      </div>
-
-      <div className='info'>
-        <img src={PF + user?.profilePic || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'} className='admin__img' alt="" />
-        <h1>{post.username}</h1>
       </div>
 
     </div>
