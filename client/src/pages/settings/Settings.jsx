@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
+import { host } from "../../ApiCall";
 
 export default function Settings() {
   const [file, setFile] = useState(null);
@@ -31,7 +32,8 @@ export default function Settings() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", data);
+        // await axios.post("http://localhost:5000/api/upload", data);
+        await axios.post(`${host}/api/upload`, data);
       } catch (err) { }
     }
     try {

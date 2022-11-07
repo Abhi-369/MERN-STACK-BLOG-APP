@@ -1,0 +1,1 @@
+export const host = 'https://mern-blog0.herokuapp.com'
